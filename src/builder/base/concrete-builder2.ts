@@ -8,10 +8,10 @@ export class ConcreteBuilder2 implements Builder {
     this.product2 = new Product2();
   }
 
-  public getProduct(): Product2 {
+  public getProduct<T>(): T {
     const result = this.product2;
     this.reset();
-    return result;
+    return result as T;
   }
 
   buildPart1(part: string) {
