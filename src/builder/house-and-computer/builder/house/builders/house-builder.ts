@@ -1,5 +1,6 @@
 export interface HouseBuilder {
     reset(): void;
+    getResult(): any;
     buildWalls(): void;
     buildDoors(): void;
     buildWindows(): void;
