@@ -1,11 +1,8 @@
-import { Person } from "./person";
 import { RobotPerson } from "./robot-person";
-const robotPerson: RobotPerson = {
-  name: "R2-D2",
-  age: 0,
-  model: "R2"
-} as RobotPerson;
-const robot = new RobotPerson(robotPerson);
+const robot = new RobotPerson();
+robot.model = "R2";
+robot.age = 0;
+robot.name = "R2-D2";
 console.log("Robot:", robot);
 
 robot.greet();

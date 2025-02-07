@@ -11,6 +11,8 @@ export class RobotPerson extends Person {
     super(source);
     if (source) {
       this.model = source.model;
+      this.name = source.name;
+      this.age = source.age;
     } else {
       this.model = "";
     }
