@@ -1,36 +1,54 @@
 interface Files {
   scan(): void;
   open(): void;
+  getPath(): string;
+  setParent(parent: Directory | null): void;
 }
 
 class ConcreteFile implements Files {
   name: string;
+  private parent: Directory | null = null;
+
   constructor({ name }: { name: string }) {
     this.name = name;
   }
+
   scan(): void {
-    console.log(`Scanning file ${this.name}`);
+    console.log(`Scanning file ${this.getPath()}`);
   }
 
   open(): void {
-    console.log(`Opening file ${this.name}`);
+    console.log(`Opening file ${this.getPath()}`);
+  }
+
+  getPath(): string {
+    if (this.parent) {
+      return `${this.parent.getPath()}/${this.name}`;
+    }
+    return this.name;
+  }
+
+  setParent(parent: Directory | null): void {
+    this.parent = parent;
   }
 }
 
 class Directory implements Files {
   private files: Files[] = [];
   name: string;
+  private parent: Directory | null = null;
+
   constructor({ name }: { name: string }) {
     this.name = name;
   }
 
   scan(): void {
-    console.log(`Scanning directory ${this.name}`);
+    console.log(`Scanning directory ${this.getPath()}`);
     this.files.forEach(file => file.scan());
   }
 
   open(): void {
-    console.log(`Opening directory ${this.name}`);
+    console.log(`Opening directory ${this.getPath()}`);
     this.files.forEach((file, index) => {
       console.log(`Opening file ${index + 1}`);
       file.open();
@@ -39,6 +57,18 @@ class Directory implements Files {
 
   addFile(file: Files): void {
     this.files.push(file);
+    file.setParent(this);
+  }
+
+  getPath(): string {
+    if (this.parent) {
+      return `${this.parent.getPath()}/${this.name}`;
+    }
+    return this.name;
+  }
+
+  setParent(parent: Directory | null): void {
+    this.parent = parent;
   }
 }
 
