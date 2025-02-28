@@ -1,4 +1,8 @@
 import { DocumentPrototype } from "./document-prototype";
+import { HtmlDocument } from "./html-document";
+import { PdfDocument } from "./pdf-document";
+import { TextDocument } from "./text-document";
+import { WordDocument } from "./word-document";
 
 export interface IDocument {
   logo: string;
@@ -7,7 +11,9 @@ export interface IDocument {
   content: string
 }
 
-export interface IDocumentWithPrototype extends IDocument, DocumentPrototype {}
+export interface IDocumentWithPrototype extends IDocument, DocumentPrototype {
+  print(): void
+}
 
 export interface IDocumentPdf extends IDocument {
   content: string
@@ -38,8 +44,8 @@ export abstract class AbstractDocumentFactory {
     this.footer = footer;
     this.metadata = metadata;
   }
-  abstract createDocumentPdf(): IDocumentWithPrototype;
-  abstract createDocumentWord(): IDocumentWithPrototype;
-  abstract createDocumentHtml(): IDocumentWithPrototype;
-  abstract createDocumentText(): IDocumentWithPrototype;
+  abstract createDocumentPdf(): PdfDocument;
+  abstract createDocumentWord(): WordDocument;
+  abstract createDocumentHtml(): HtmlDocument;
+  abstract createDocumentText(): TextDocument;
 }

@@ -26,6 +26,6 @@ const contratoDeEmpleoFactory = new ContratoDeEmpleoFactory({
 
 const client = new Client(contratoDeEmpleoFactory);
 const documents = client.createDocuments();
-console.log(documents);
+documents.pdf.print();
 const clonedDocument = documents.pdf.clone();
-console.log(clonedDocument);
+clonedDocument.print();

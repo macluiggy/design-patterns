@@ -27,7 +27,7 @@ export class ContratoDeEmpleoFactory extends AbstractDocumentFactory {
       footer: this.footer,
       metadata: this.metadata,
       content: "Contrato de empleo en HTML",
-    }) as unknown as IDocumentWithPrototype;
+    });
   }
   createDocumentText() {
     return new TextDocument({

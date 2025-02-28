@@ -12,7 +12,7 @@ export class ReporteFinancieroFactory extends AbstractDocumentFactory {
       metadata: this.metadata,
       content: "Reporte financiero en PDF",
     } as PdfDocument);
- 
+
   }
   createDocumentWord() {
     return new WordDocument({
@@ -28,7 +28,7 @@ export class ReporteFinancieroFactory extends AbstractDocumentFactory {
       footer: this.footer,
       metadata: this.metadata,
       content: "Reporte financiero en HTML",
-    }) as unknown as IDocumentWithPrototype;
+    });
   }
   createDocumentText() {
     return new TextDocument({
