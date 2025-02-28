@@ -1,36 +1,41 @@
-import { AbstractDocumentFactory } from "./abstract-document-factory";
+import { AbstractDocumentFactory, IDocumentWithPrototype } from "./abstract-document-factory";
+import { HtmlDocument } from "./html-document";
+import { TextDocument } from "./text-document";
+import { WordDocument } from "./word-document";
+import { PdfDocument } from "./pdf-document";
 
 export class ReporteFinancieroFactory extends AbstractDocumentFactory {
   createDocumentPdf() {
-    return {
+    return new PdfDocument({
       logo: this.logo,
       footer: this.footer,
       metadata: this.metadata,
       content: "Reporte financiero en PDF",
-    };
+    } as PdfDocument);
+ 
   }
   createDocumentWord() {
-    return {
+    return new WordDocument({
       logo: this.logo,
       footer: this.footer,
       metadata: this.metadata,
       content: "Reporte financiero en Word",
-    };
+    } as WordDocument);
   }
   createDocumentHtml() {
-    return {
+    return new HtmlDocument({
       logo: this.logo,
       footer: this.footer,
       metadata: this.metadata,
       content: "Reporte financiero en HTML",
-    };
+    }) as unknown as IDocumentWithPrototype;
   }
   createDocumentText() {
-    return {
+    return new TextDocument({
       logo: this.logo,
       footer: this.footer,
       metadata: this.metadata,
       content: "Reporte financiero en texto plano",
-    };
+    } as TextDocument);
   }
 }

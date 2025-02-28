@@ -1,4 +1,4 @@
-import { AbstractDocumentFactory } from "./abstract-document-factory";
+import { AbstractDocumentFactory, IDocument } from "./abstract-document-factory";
 import { ContratoDeEmpleoFactory } from "./contrato-de-empleo.factory";
 
 export class Client {
@@ -27,3 +27,5 @@ const contratoDeEmpleoFactory = new ContratoDeEmpleoFactory({
 const client = new Client(contratoDeEmpleoFactory);
 const documents = client.createDocuments();
 console.log(documents);
+const clonedDocument = documents.pdf.clone();
+console.log(clonedDocument);
