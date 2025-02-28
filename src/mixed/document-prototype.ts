@@ -1,3 +1,3 @@
-export interface DocumentPrototype {
-    clone(): DocumentPrototype;
+export interface DocumentPrototype<T extends DocumentPrototype<T> = DocumentPrototype<any>> {
+    clone(): T;
 }

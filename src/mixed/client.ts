@@ -1,5 +1,6 @@
 import { AbstractDocumentFactory, IDocument } from "./abstract-document-factory";
 import { ContratoDeEmpleoFactory } from "./contrato-de-empleo.factory";
+import { EncryptedDocument } from "./encrypted-document.decorator";
 
 export class Client {
   constructor(private documentFactory: AbstractDocumentFactory) {}
@@ -26,6 +27,7 @@ const contratoDeEmpleoFactory = new ContratoDeEmpleoFactory({
 
 const client = new Client(contratoDeEmpleoFactory);
 const documents = client.createDocuments();
-documents.pdf.print();
 const clonedDocument = documents.pdf.clone();
-clonedDocument.print();
+const encryptedDocument = new EncryptedDocument(clonedDocument);
+const content =encryptedDocument.getContent();
+console.log(content);

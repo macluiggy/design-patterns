@@ -23,5 +23,8 @@ export abstract class AbstractDocument implements IDocumentWithPrototype {
     console.log(this);
   }
 
+  getContent() {
+    return this.content;
+  }
  abstract clone(): AbstractDocument;
 }
