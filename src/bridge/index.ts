@@ -94,4 +94,4 @@ class RefinedAbstraction extends Abstraction {
   feature4() {
     console.log('RefinedAbstraction feature4');
   }
-}
+} 
